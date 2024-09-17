@@ -1045,6 +1045,9 @@ msgctxt ""
 msgid "%n track(s)"
 msgstr ""
 
+msgid "Various album artists"
+msgstr ""
+
 msgid "Automatic"
 msgstr ""
 

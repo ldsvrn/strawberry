@@ -547,31 +547,31 @@ QString PlaylistManager::GetNameForNewPlaylist(const SongList &songs) {
     return tr("Playlist");
   }
 
-  QSet<QString> artists;
+  QSet<QString> albumartists;
   QSet<QString> albums;
-  artists.reserve(songs.count());
+  albumartists.reserve(songs.count());
   albums.reserve(songs.count());
   for (const Song &song : songs) {
-    artists << (song.artist().isEmpty() ? tr("Unknown") : song.artist());
+    albumartists << (song.albumartist().isEmpty() ? tr("Unknown") : song.albumartist());
     albums << (song.album().isEmpty() ? tr("Unknown") : song.album());
 
-    if (artists.size() > 1) {
+    if (albumartists.size() > 1) {
       break;
     }
   }
 
-  bool various_artists = artists.size() > 1;
+  bool various_albumartists = albumartists.size() > 1;
 
   QString result;
-  if (various_artists) {
-    result = tr("Various artists");
+  if (various_albumartists) {
+    result = tr("Various album artists");
   }
   else {
-    QStringList artist_names = artists.values();
+    QStringList artist_names = albumartists.values();
     result = artist_names.first();
   }
 
-  if (!various_artists && albums.size() == 1) {
+  if (!various_albumartists && albums.size() == 1) {
     QStringList album_names = albums.values();
     result += " - "_L1 + album_names.first();
   }
